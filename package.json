@@ -1,16 +1,16 @@
 {
-  "name": "linter-less",
+  "name": "linter-stylus",
   "main": "./lib/init",
-  "version": "0.3.1",
-  "description": "Lint `less` on the fly, using less",
+  "version": "0.0.0",
+  "description": "Lint `styl` on the fly, using stylus",
   "linter-package": true,
   "activationEvents": [],
-  "repository": "https://github.com/AtomLinter/linter-less",
+  "repository": "https://github.com/olmokramer/atom-linter-stylus",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "less": "^1.7.5"
+    "stylus": "^0.50.0"
   }
 }
