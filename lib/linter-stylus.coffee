@@ -13,7 +13,6 @@ class LinterStylus extends Linter
     stylus data
       .set 'filename', filePath
       .render (err, css) =>
-        # if not err? or not err.message.match filePath
         unless err?
           return callback []
 
