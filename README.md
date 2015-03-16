@@ -21,3 +21,7 @@ You can configure linter-stylus from the settings view in Atom, or by editint `~
   # if you don't want to use the bundled version of stylus
   'stylusPath': '/usr/local/lib/node_modules/stylus'
 ```
+
+## Known issues
+
+* Relative imports don't work when the import is in a directory from Stylus' `paths` option
