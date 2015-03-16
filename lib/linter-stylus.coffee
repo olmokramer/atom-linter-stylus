@@ -1,13 +1,20 @@
+{resolve} = require 'path'
+{Range} = require 'atom'
 linterPath = atom.packages.getLoadedPackage('linter').path
 Linter = require "#{linterPath}/lib/linter"
-fs = require 'fs'
-path = require 'path'
-stylus = require 'stylus'
-{Range} = require 'atom'
+stylus = null
 
 class LinterStylus extends Linter
   @syntax: 'source.stylus'
   linterName: 'stylus'
+
+  constructor: (editor) ->
+    super editor
+    @sub = atom.config.observe 'linter-stylus.stylusPath', (stylusPath) ->
+      stylus = require resolve stylusPath
+
+  destroy: ->
+    @sub.dispose()
 
   parseStylusFile: (data, filePath, callback) ->
     stylus data
@@ -15,9 +22,7 @@ class LinterStylus extends Linter
       .render (err, css) =>
         unless err?
           return callback []
-
-        lines = err.message.split /\n/
-        lines = lines.map (line) -> line.replace /^\s*/, ''
+        lines = err.message.split(/\n/).map (line) -> line.replace /^\s*/, ''
         [..., lineNr, column] = lines.shift().match /.*:(\d+):(\d+)/
         lineIdx = Math.max 0, lineNr - 1
 
