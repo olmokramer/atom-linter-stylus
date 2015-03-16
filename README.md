@@ -19,5 +19,5 @@ You can configure linter-stylus from the settings view in Atom, or by editint `~
 ```cson
 'linter-stylus':
   # if you don't want to use the bundled version of stylus
-  'stylusExecutablePath': '/usr/local/lib/node_modules/stylus/bin/stylus'
+  'stylusPath': '/usr/local/lib/node_modules/stylus'
 ```
