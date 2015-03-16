@@ -1,4 +1,4 @@
-{resolve} = require 'path'
+{resolve, dirname, basename} = require 'path'
 {Range} = require 'atom'
 linterPath = atom.packages.getLoadedPackage('linter').path
 Linter = require "#{linterPath}/lib/linter"
@@ -17,8 +17,11 @@ class LinterStylus extends Linter
     @sub.dispose()
 
   parseStylusFile: (data, filePath, callback) ->
+    activeFilePath = atom.workspace.getActiveTextEditor().getPath()
+    return unless basename(filePath) is basename(activeFilePath)
     stylus data
       .set 'filename', filePath
+      .set 'paths', [dirname(activeFilePath)]
       .render (err, css) =>
         unless err?
           return callback []
