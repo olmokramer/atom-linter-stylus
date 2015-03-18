@@ -1,5 +1,8 @@
 # linter-stylus changelog
 
+## 0.1.3
+* Add support for multiple include paths
+
 ## 0.1.2
 * Use file's directory as include path
 
