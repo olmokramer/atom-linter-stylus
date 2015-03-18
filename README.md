@@ -14,7 +14,7 @@ $ apm install linter-stylus
 
 ## Stylus include paths
 
-Stylus has a `paths` option, which is an array to look in for relative `@import`s. This option cannot be detected by `linter-stylus`, and it will throw errors that it can't find the `@import`s. To solve this, you can add a `linter-stylus` section to the project root's `package.json`, or alternatively you can create a `linter-stylus.json` file in the project root that defines these include paths:
+Stylus has a `paths` option, which is an array to look in for relative `@import`s. This option cannot be detected by `linter-stylus`, and it will throw errors that it can't find the `@import`s. To solve this, you can add a `linter-stylus` section to the project root's `package.json` to defines these include paths:
 ```cson
 # package.json
 {
@@ -27,14 +27,6 @@ Stylus has a `paths` option, which is an array to look in for relative `@import`
       "/some/other/path"
     ]
   }
-}
-
-# linter-stylus.json
-{
-  "includePaths": [
-    "/home/user/some/dir/with/stylus/includes",
-    "/some/other/path"
-  ]
 }
 ```
 Now stylus will also look in those directories for an `@import` file when linting.
