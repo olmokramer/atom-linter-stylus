@@ -58,23 +58,17 @@ class LinterStylus extends Linter
     null
 
   getIncludePaths: (cb) ->
-    files = [
-      resolve @getActiveProjectRoot(), 'package.json'
-      resolve @getActiveProjectRoot(), 'linter-stylus.json'
-    ]
-    done = 0
-    for file in files
-      if fs.existsSync(file) and fs.lstatSync(file).isFile()
-        fs.readFile file, (err, data) ->
-          done++
-          if err?
-            return cb err, null
+    configFile = resolve @getActiveProjectRoot(), 'package.json'
+    fs.exists configFile, (exists) ->
+      return cb null, [] unless exists
+      fs.lstat configFile, (err, stat) ->
+        return cb err, null if err?
+        return cb 'package.json is directory', null if stat.isDirectory()
+        fs.readFile configFile, (err, data) ->
+          return cb err, null if err?
           data = JSON.parse data.toString()
           if data['linter-stylus']
             data = data['linter-stylus']
-          if data.includePaths?
-            cb null, data.includePaths
-          else if done is files.length
-            cb null, []
+          cb null, data.includePaths ? []
 
 module.exports = LinterStylus
