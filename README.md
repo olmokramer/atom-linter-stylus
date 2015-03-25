@@ -1,3 +1,6 @@
+# This package is no longer supported, use [linter-stylint](https://atom.io/packages/linter-stylint) instead
+<br><br>
+
 # linter-stylus
 
 This plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to [stylus](https://learnboost.github.io/stylus). It will be used with files that have the `Stylus` syntax.
