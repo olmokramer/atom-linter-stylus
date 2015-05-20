@@ -1,7 +1,7 @@
 {
   "name": "linter-stylus",
   "main": "./lib/init",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Lint `styl` on the fly, using stylus",
   "linter-package": true,
   "activationEvents": [],
